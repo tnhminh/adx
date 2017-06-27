@@ -97,20 +97,16 @@ public class QueryResource {
             Long pageViews = aggEx.doBasicExtendQuery(ParseUtil.parseQueryTypeToNumber("pageview_total"), dateType, siteId, fromDate, toDate);
             Long sessions = aggEx.doBasicExtendQuery(ParseUtil.parseQueryTypeToNumber("session_total"), dateType, siteId, fromDate, toDate);
             result = JSONBuilder.createJSONObjectForBasicCounter("page_on_session", String.valueOf((double) pageViews / sessions));
-            // return createJSONObjectForBasicCounter;
         } else if (queryType.equals("bounce_rate")) {
             result = JSONBuilder.createJSONObjectForBasicCounter("bounce_rate",
                     aggEx.doPercentCounter(ParseUtil.parseQueryTypeToNumber(queryType), dateType, siteId, fromDate, toDate));
-            // return createJSONObjectForBasicCounter;
         } else if (queryType.equals("avg_session_duration")) {
             Long timeSpent = aggEx.doBasicExtendQuery(ParseUtil.parseQueryTypeToNumber("time_spent_total"), dateType, siteId, fromDate, toDate);
             Long sessions = aggEx.doBasicExtendQuery(ParseUtil.parseQueryTypeToNumber("session_total"), dateType, siteId, fromDate, toDate);
             result = JSONBuilder.createJSONObjectForBasicCounter("avg_session_duration", String.valueOf((double) timeSpent / sessions));
-            // return createJSONObjectForBasicCounter;
         } else if (queryType.equals("percent_new_session")) {
             result = JSONBuilder.createJSONObjectForBasicCounter("percent_new_session",
                     aggEx.doPercentCounter(ParseUtil.parseQueryTypeToNumber(queryType), dateType, siteId, fromDate, toDate));
-            // return createJSONObjectForBasicCounter;
         }
         long durationTime = System.currentTimeMillis() - currentTime;
         return appendDurationTimeToResult(result, durationTime);
