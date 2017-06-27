@@ -1,0 +1,4 @@
+net/javaforge/netty/App.class
+net/javaforge/netty/jersey/MyApplication.class
+net/javaforge/netty/jersey/QueryResource.class
+net/javaforge/netty/App$1.class
